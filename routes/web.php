@@ -4,8 +4,10 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\WelcomeControlller;
+
 
 
 /*
@@ -28,6 +30,7 @@ use App\Http\Controllers\WelcomeControlller;
 //     ]);
 // });
  Route::get('/',[WelcomeControlller::class,'Welcome'])->name('welcome');
+ Route::post('/contact',ContactController::class)->name('contact');
 
 
 

@@ -12,7 +12,7 @@ defineProps({
 <div class="mb-6"> 
     <img class="rounded-2xl h-56" :src="project.image" :alt="project.name" />
 </div>
-
+<span class="group-hovertext-light-tail-500 text-1xl font-semibold capitalize mb-3">{{project.name}}</span>
 <h3 class="group-hover:text-light-tail-500 text-2xl font-semibold capitalize mb-3">{{project.skill.name}}</h3>
 </Link>
 </template>

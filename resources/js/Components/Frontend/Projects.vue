@@ -8,16 +8,21 @@ import {ref} from 'vue';
     });
 
     const filteredProjects = ref(props.projects.data);
+    const selectedSkill = ref("all"); 
 
     
     const filterProjects = (id) =>{
         if(id ==="all"){
-            filteredProjects.value = props.projects.data
+            filteredProjects.value = props.projects.data;
+            selectedSkill.value = id;
+
         }
         else {
             filteredProjects.value = props.projects.data.filter(project =>{
                 return project.skill.id ===id;
-            })
+            });
+            selectedSkill.value = id;
+
 
         }
     }
@@ -29,10 +34,17 @@ import {ref} from 'vue';
      <nav class="mb-12 border-b-2 border-light-tail-100 dark:text-dark-navy-100">
             <ul class="flex flex-col lg:flex-row justify-evenly items-center">
                 <li class="cursor-pointer capitalize m-4">
-                <button @click="filterProjects('all')" class="flex text-center px-4 py-2 hover:text-light-sail-500 dark:text-dark-navy-100">All</button>
+                <button @click="filterProjects('all')" class="flex text-center 
+                px-4 py-2 hover:text-light-sail-500 dark:text-dark-navy-100" 
+                :class="[
+                    selectedSkill ==='all' ? 'text-light-tail-500 dark:text-dark-navy-100' :'',
+                ]">All</button>
                 </li>
                 <li v-for="projectskill in skills.data" :key="projectskill.id" class="cursor-pointer capitalize m-4">
-                    <button @click="filterProjects(projectskill.id)" class="flex text-center px-4 py-2 hover:text-light-tail-500 dark:text-dark-navy-100">
+                    <button @click="filterProjects(projectskill.id)" class="flex text-center px-4 py-2 hover:text-light-tail-500 dark:text-dark-navy-100"
+                    :class="[
+                    selectedSkill == projectskill.id ? 'text-light-tail-500 dark:text-dark-navy-100' :'',
+                    ]">
                     {{projectskill.name}}
                     </button>
                 </li>
